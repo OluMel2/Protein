@@ -1,5 +1,7 @@
 class Public::PostsController < ApplicationController
 
+
+
   def new
     @post = Post.new
   end
@@ -7,9 +9,24 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to posts_path
+
+    # for DEBUG
+    @post.tag_id = 0
+    # for DEBUG
+
+    @post.save!
+    redirect_to posts_all_path
   end
+
+  def index
+    @posts = Post.all
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+  end
+
 
   private
 
