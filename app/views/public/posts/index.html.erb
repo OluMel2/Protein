@@ -3,7 +3,7 @@
 <% @posts.each do |posts| %>
 <div>
   <p>ユーザーネーム：<%= posts.user.name %></p>
-  <p>ユーザー画像：<%= image_tag 'no_image.jpg', width: "200×200" %><!-- %></p> <!--後から消すindexでは必要ない-->
+  <p>ユーザー画像：<%= image_tag 'user_no_image.jpg', width: "100×100" %><!-- %></p> <!--後から消すindexでは必要ない-->
   <%= link_to post_path(posts.id) do %>
   <%= image_tag posts.get_image, width: "100×100" %><!--投稿した商品の画像-->
   <% end %>

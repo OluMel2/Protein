@@ -1,0 +1,22 @@
+<h1>投稿編集</h1>
+<%= form_with model: @post, method: :patch do |f| %>
+    <h6>商品名</h6>
+      <%= f.text_field :product_name %>
+    <h6>味</h6>
+      <%= f.text_field :tast %>
+    <h6>価格</h6>
+      <%= f.text_field :price %>
+    <h6>内容量</h6>
+      <%= f.text_field :net %>
+    <h6>1杯あたりの量</h6>
+      <%= f.text_field :serving_size %>
+    <h6>カロリー(1杯あたり)</h6>
+      <%= f.text_field :calorie %>
+    <h6>タンパク質量(1杯あたり)</h6>
+      <%= f.text_field :protein %>
+    <h6>説明</h6>
+      <%= f.text_area :description %>
+    <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+    <%= f.submit '保存' %>
+  <% end %>

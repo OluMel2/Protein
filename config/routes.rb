@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to:"homes#top"
     get 'about' => 'homes#about'
+
     get 'posts/all' => 'posts#index'
+    #get 'posts/information/edit' => 'posts#edit'
 
     get 'users/mypage' => 'users#show'
     get 'users/information/edit' => 'users#edit'
@@ -21,10 +23,10 @@ Rails.application.routes.draw do
     get 'users/quit' => 'users#quit'
     patch 'users/out' => 'users#out'
 
-    resources :posts, only: [:show, :new, :create, :update, :destroy] do
+    resources :posts, only: [:show, :new, :create, :update, :edit, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
-    get 'posts/information/edit' => 'posts#edit'
+
 
   end
 

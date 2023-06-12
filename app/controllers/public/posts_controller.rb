@@ -27,6 +27,26 @@ class Public::PostsController < ApplicationController
     @user = @post.user
   end
 
+  def edit
+    @post = Post.find(params[:id])
+    if @post.user == current_user
+      render "edit"
+    else
+      redirect_to posts_all_path
+    end
+  end
+
+  def update
+    post = Post.find(params[:id])
+    post.update(post_params)
+    redirect_to posts_all_path
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_all_path
+  end
 
   private
 

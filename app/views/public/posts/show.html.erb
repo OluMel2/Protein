@@ -6,7 +6,7 @@
         <%= link_to @user.name, users_path(@post.user.id) %>
       </td>
       <td><%= image_tag @post.get_image, width: "100×100" %></td>
-      <td><%= link_to @post.product_name, post_path(@post.id) %></td>
+      <td><%= @post.product_name %></td>
       <td><%= @post.tast %></td>
       <td><%= @post.price%></td>
       <td><%= @post.net%></td>
@@ -16,7 +16,7 @@
       <td><%= @post.description %></td>
       <td>
         <% if @post.user == current_user %>
-        <%= link_to "Edit", posts_information_edit_path(@post.id), class: "btn btn-sm btn-success" %>
+        <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
         <% end %>
       </td>
       <td>
