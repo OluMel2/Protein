@@ -14,17 +14,18 @@ Rails.application.routes.draw do
     root to:"homes#top"
     get 'about' => 'homes#about'
 
+    get 'posts/all' => 'posts#index'
+    #get 'posts/information/edit' => 'posts#edit'
+
     get 'users/mypage' => 'users#show'
     get 'users/information/edit' => 'users#edit'
     patch 'users' => 'users#update'
     get 'users/quit' => 'users#quit'
     patch 'users/out' => 'users#out'
 
-    get 'posts/information/edit' => 'posts#edit'
-    resources :posts, only: [:index, :show, :new, :create, :update, :destroy] do
+    resources :posts, only: [:show, :new, :create, :update, :edit, :destroy] do
       resources :comments, only: [:create, :destroy]
     end
-
 
 
   end

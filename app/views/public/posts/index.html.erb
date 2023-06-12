@@ -1,0 +1,20 @@
+投稿一覧ページ
+
+<% @posts.each do |posts| %>
+<div>
+  <p>ユーザーネーム：<%= posts.user.name %></p>
+  <p>ユーザー画像：<%= image_tag 'user_no_image.jpg', width: "100×100" %><!-- %></p> <!--後から消すindexでは必要ない-->
+  <%= link_to post_path(posts.id) do %>
+  <%= image_tag posts.get_image, width: "100×100" %><!--投稿した商品の画像-->
+  <% end %>
+  <p>商品名：<%= link_to posts.product_name, post_path(posts.id) %></p>
+  <p>味：<%= posts.tast %></p>
+  <p>価格：<%= posts.price %></p>
+  <p>内容量：<%= posts.net %></p>
+  <p>1杯あたりの量：<%= posts.serving_size %></p>
+  <p>カロリー(1杯あたり)：<%= posts.calorie %></p>
+  <p>タンパク質量(1杯あたり)：<%= posts.protein%></p>
+  <p>説明：<%= posts.description %></p>
+</div>
+<% end %>
+
