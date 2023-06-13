@@ -19,7 +19,16 @@ class Public::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to user_mypage_path(@user.id)
   end
+
+  def out
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    #flash[:notice] = "またのご利用をお待ちしております。"
+    redirect_to root_path
+  end
 end
+
 
 
 private
