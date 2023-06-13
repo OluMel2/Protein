@@ -2,14 +2,15 @@
 <div class="container">
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image %>
-  <% if @user == current_user.id %>
-  <p><%= link_to "プロフィール編集", users_information_edit_path(@user) %></p>
+  <%= @user.introduction %>
+  <%= @user.work_out %>
+  <% if @user == current_user %>
+  <p><%= link_to "プロフィール編集", user_information_path(@user.id) %></p>
   <% end %>
 </div>
 
 
 <!-- ユーザーの投稿一覧 -->
-
 <% @posts.each do |posts| %>
 <div>
   <%= link_to post_path(posts.id) do %>

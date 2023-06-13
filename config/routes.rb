@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     resource :user, only: [:update]
     get 'users/mypage/:id' => 'users#show', as: 'user_mypage'
-    get 'users/information/edit' => 'users#edit'
+    get 'users/information/edit/:id' => 'users#edit', as: 'user_information'
     get 'users/quit' => 'users#quit'
     patch 'users/out' => 'users#out'
 
