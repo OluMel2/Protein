@@ -1,25 +1,29 @@
 Rails.application.routes.draw do
 
+
+    #get 'users/show'
+    #get 'users/edit'
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
-}
+  }
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
-  sessions: "admin/sessions"
-}
+  sessions: 'admin/sessions'
+  }
 
   #顧客側
   scope module: :public do
-    root to:"homes#top"
+    root to:'homes#top'
     get 'about' => 'homes#about'
 
     get 'posts/all' => 'posts#index'
     #get 'posts/information/edit' => 'posts#edit'
 
-    get 'users/mypage' => 'users#show'
+
+    resource :user, only: [:update]
+    get 'users/mypage/:id' => 'users#show', as: 'user_mypage'
     get 'users/information/edit' => 'users#edit'
-    patch 'users' => 'users#update'
     get 'users/quit' => 'users#quit'
     patch 'users/out' => 'users#out'
 
@@ -34,7 +38,7 @@ Rails.application.routes.draw do
   #管理者側
   namespace :admin do
 
-    root to:"homes#top"
+    root to:'homes#top'
 
     resources :posts, only: [:show, :destroy]
 

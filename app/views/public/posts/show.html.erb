@@ -3,7 +3,7 @@
   <tbody>
     <tr>
       <td>
-        <%= link_to @user.name, users_path(@post.user.id) %>
+        <%= link_to @user.name, user_mypage_path(@post.user.id) %>
       </td>
       <td><%= image_tag @post.get_image, width: "100×100" %></td>
       <td><%= @post.product_name %></td>
