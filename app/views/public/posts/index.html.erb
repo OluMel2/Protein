@@ -15,6 +15,7 @@
   <p>カロリー(1杯あたり)：<%= posts.calorie %></p>
   <p>タンパク質量(1杯あたり)：<%= posts.protein%></p>
   <p>説明：<%= posts.description %></p>
+  <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
 </div>
 <% end %>
 
