@@ -1,5 +1,22 @@
 <header>
- <% if user_signed_in? %>
+
+ <% if admin_signed_in? %>
+  <li>
+    <%= link_to "トップ", admin_root_path %>
+  </li>
+
+  <li>
+    <%= link_to "会員一覧", admin_users_path %>
+  </li>
+
+  <li>
+    <%= link_to "タグ一覧", admin_tags_path %>
+  </li>
+
+  <li>
+    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+  </li>
+ <% elsif user_signed_in? %>
   <li>
    <%= link_to 'トップ', root_path %>
   </li>
@@ -29,4 +46,5 @@
    <%= link_to "ログイン", new_user_session_path %>
   </li>
  <% end %>
+
 </header>
