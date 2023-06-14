@@ -1,12 +1,12 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     @posts = @user.posts
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     if @user == current_user
        render "edit"
     else
@@ -15,9 +15,9 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     @user.update(user_params)
-    redirect_to user_mypage_path(@user.id)
+    redirect_to user_mypage_path(current_user)
   end
 
 

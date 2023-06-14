@@ -1,8 +1,10 @@
-<!-- ユーザーの詳細 -->user show
+<!-- ユーザーの詳細 -->
 <div class="container">
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image %>
+  <strong>自己紹介</strong>
   <%= @user.introduction %>
+  <strong>運動頻度</strong>
   <%= @user.work_out %>
   <% if @user == current_user %>
   <p><%= link_to "プロフィール編集", user_information_path(@user.id) %></p>
