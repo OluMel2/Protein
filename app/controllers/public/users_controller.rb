@@ -20,6 +20,7 @@ class Public::UsersController < ApplicationController
     redirect_to user_mypage_path(@user.id)
   end
 
+
   def out
     @user = current_user
     @user.update(is_deleted: true)
