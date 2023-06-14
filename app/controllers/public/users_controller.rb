@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
     @posts = @user.posts
   end
 
@@ -24,6 +24,7 @@ class Public::UsersController < ApplicationController
   def out
     @user = current_user
     @user.update(is_deleted: true)
+    @user.comments.destroy_all
     reset_session
     #flash[:notice] = "またのご利用をお待ちしております。"
     redirect_to root_path
