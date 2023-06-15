@@ -1,0 +1,33 @@
+<h2>Admin Post detail</h2>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to @user.name, admin_user_path(@post.user.id) %>
+      </td>
+      <td><%= image_tag @post.get_image, width: "100×100" %></td>
+      <td><%= @post.product_name %></td>
+      <td><%= @post.tast %></td>
+      <td><%= @post.price%></td>
+      <td><%= @post.net%></td>
+      <td><%= @post.serving_size %></td>
+      <td><%= @post.calorie %></td>
+      <td><%= @post.protein %></td>
+      <td><%= @post.description %></td>
+      <td>
+        <%= link_to "Destroy", admin_post_path(@post), class: "btn btn-sm btn-danger", method: :delete %>
+      </td>
+      <td>
+        <div>
+          <p>コメント件数：<%= @post.comments.count %></p>
+          <% @post.comments.each do |comment| %>
+            <p><%= image_tag comment.user.get_profile_image, width: "100×100" %></p>
+            <%= link_to comment.user.name, admin_user_path(comment.user.id) %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+            <%= link_to "削除", admin_comment_path(comment.post, comment), method: :delete %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
