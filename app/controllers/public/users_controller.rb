@@ -36,5 +36,5 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:name, :image, :introduction, :work_out)
+  params.require(:user).permit(:name, :profile_image, :introduction, :work_out)
 end

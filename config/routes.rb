@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
     #get 'users/show'
     #get 'users/edit'
   devise_for :users,skip: [:passwords], controllers: {
@@ -40,11 +45,11 @@ Rails.application.routes.draw do
 
     root to:'homes#top'
 
-    resources :posts, only: [:show, :destroy]
-
-    resources :users, only: [:index, :show, :edit, :update] do
+    resources :posts, only: [:show, :destroy] do
       resources :comments, only: [:destroy]
     end
+
+    resources :users, only: [:index, :show, :edit, :update]
 
     resources :tags, only: [:index, :create, :edit, :update]
 
