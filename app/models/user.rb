@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :posts,    dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/user_no_image.jpg')
