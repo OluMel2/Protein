@@ -20,8 +20,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.joins(:user).where("users.is_deleted = false")
-    #退会したユーザーのデータは表示されない
-    #@posts = Post.all
+    #退会したユーザーのデータは表示されない。#@posts = Post.all
   end
 
   def show

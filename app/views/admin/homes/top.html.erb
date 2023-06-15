@@ -2,9 +2,9 @@
 
 <% @posts.each do |posts| %>
 <div>
-  <p>ユーザーネーム：<%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
+  <p>ユーザーネーム：<%= link_to posts.user.name, admin_user_path(posts.user.id) %></p>
   <p>ユーザー画像：<%= image_tag 'user_no_image.jpg', width: "100×100" %><!-- %></p> <!--後から消すindexでは必要ない-->
-  <%= link_to post_path(posts.id) do %>
+  <%= link_to admin_post_path(posts.id) do %>
   <%= image_tag posts.get_image, width: "100×100" %><!--投稿した商品の画像-->
   <% end %>
   <p>商品名：<%= link_to posts.product_name, post_path(posts.id) %></p>
@@ -15,7 +15,7 @@
   <p>カロリー(1杯あたり)：<%= posts.calorie %></p>
   <p>タンパク質量(1杯あたり)：<%= posts.protein%></p>
   <p>説明：<%= posts.description %></p>
-  <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+  <p><%= link_to "#{posts.comments.count} コメント", admin_post_path(posts.id) %></p>
 </div>
 <% end %>
 
