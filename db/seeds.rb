@@ -9,3 +9,11 @@ Admin.create!(
   email: 'admin@admin',
   password: 'admin403'
   )
+
+Tag.create([
+  { name: 'WPC製法' },
+  { name: 'WPI製法' },
+  { name: 'WPH製法'},
+  { name: 'カゼインプロテイン'},
+  { name: 'ソイプロテイン'}
+  ])

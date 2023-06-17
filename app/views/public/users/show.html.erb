@@ -19,6 +19,7 @@
     <%= image_tag posts.get_image, width: "100×100" %>
   <% end %>
   <p>商品名：<%= link_to posts.product_name, post_path(posts.id) %></p>
+  <p>タイプ：<%= posts.tag.name %></p>
   <p>味：<%= posts.tast %></p>
   <p>価格：<%= posts.price %></p>
   <p>内容量：<%= posts.net %></p>

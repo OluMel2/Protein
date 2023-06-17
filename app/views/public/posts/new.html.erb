@@ -4,6 +4,8 @@
   <%= form_with model: @post do |f| %>
     <h6>商品名</h6>
       <%= f.text_field :product_name %>
+    <h6>タイプ</h6>
+      <%= f.collection_select :tag_id, Tag.all, :id, :name, class: "col-sm-2 form-control border-dark" %>
     <h6>味</h6>
       <%= f.text_field :tast %>
     <h6>価格</h6>
@@ -22,5 +24,4 @@
       <%= f.file_field :image, accept: "image/*" %>
     <%= f.submit '投稿' %>
   <% end %>
-
 </div>
