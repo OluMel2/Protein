@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   has_many :comments, dependent: :destroy
   belongs_to :user
-  belongs_to :tag, optional: true
+  belongs_to :tag
 
 
   def get_image

@@ -1,3 +1,4 @@
+<!-- ユーザーの詳細 -->
 <h1>Admin::Users#show</h1>
 <div class="container">
   <strong>名前</strong>
@@ -9,3 +10,23 @@
   <%= @user.introduction %>
   <p><%= link_to "プロフィール編集", edit_admin_user_path(@user.id) %></p>
 </div>
+
+
+<!-- ユーザーの投稿一覧 -->
+<% @posts.each do |post| %>
+<div>
+  <%= link_to admin_post_path(post.id) do %>
+    <%= image_tag post.get_image, width: "100×100" %>
+  <% end %>
+  <p>商品名：<%= link_to post.product_name, admin_post_path(post.id) %></p>
+  <p>タイプ：<%= post.tag.name %></p>
+  <p>味：<%= post.tast %></p>
+  <p>価格：<%= post.price %></p>
+  <p>内容量：<%= post.net %></p>
+  <p>1杯あたりの量：<%= post.serving_size %></p>
+  <p>カロリー(1杯あたり)：<%= post.calorie %></p>
+  <p>タンパク質量(1杯あたり)：<%= post.protein%></p>
+  <p>説明：<%= post.description %></p>
+  <p><%= link_to "#{post.comments.count} コメント", admin_post_path(post.id) %></p>
+</div>
+<% end %>

@@ -1,5 +1,13 @@
 投稿一覧ページ
-
+<%= form_tag posts_all_path, method: :get, class: 'boards__searchForm' do %>
+  <%= select_tag :tag_id,
+                 options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                 {
+                   prompt: 'タグで絞り込み検索',
+                   onchange: 'submit(this.form);'
+                 }
+  %>
+<% end %>
 <% @posts.each do |posts| %>
 <div>
   <p>ユーザーネーム：<%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
@@ -7,6 +15,7 @@
   <%= image_tag posts.get_image, width: "100×100" %><!--投稿した商品の画像-->
   <% end %>
   <p>商品名：<%= link_to posts.product_name, post_path(posts.id) %></p>
+  <p>タイプ：<%= posts.tag.name %></p>
   <p>味：<%= posts.tast %></p>
   <p>価格：<%= posts.price %></p>
   <p>内容量：<%= posts.net %></p>

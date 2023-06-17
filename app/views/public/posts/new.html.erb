@@ -3,24 +3,25 @@
   <h1>画像投稿フォーム</h1>
   <%= form_with model: @post do |f| %>
     <h6>商品名</h6>
-      <%= f.text_field :product_name %>
+      <%= f.text_field :product_name, placeholder:"商品名" %>
+    <h6>タイプ</h6>
+      <%= f.collection_select :tag_id, Tag.all, :id, :name, class: "col-sm-2 form-control border-dark" %>
     <h6>味</h6>
-      <%= f.text_field :tast %>
+      <%= f.text_field :tast, placeholder:"味" %>
     <h6>価格</h6>
-      <%= f.text_field :price %>
+      <%= f.text_field :price, placeholder:"価格" %>
     <h6>内容量</h6>
-      <%= f.text_field :net %>
+      <%= f.text_field :net, placeholder:"内容量" %>
     <h6>1杯あたりの量</h6>
-      <%= f.text_field :serving_size %>
+      <%= f.text_field :serving_size, placeholder:"1杯あたりの量" %>
     <h6>カロリー(1杯あたり)</h6>
-      <%= f.text_field :calorie %>
+      <%= f.text_field :calorie, placeholder:"カロリー(1杯あたり)" %>
     <h6>タンパク質量(1杯あたり)</h6>
-      <%= f.text_field :protein %>
+      <%= f.text_field :protein, placeholder:"タンパク質量(1杯あたり)" %>
     <h6>説明</h6>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, placeholder:"説明" %>
     <h4>画像</h4>
       <%= f.file_field :image, accept: "image/*" %>
     <%= f.submit '投稿' %>
   <% end %>
-
 </div>
