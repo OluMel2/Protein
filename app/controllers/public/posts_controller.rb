@@ -9,13 +9,14 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-
-    # for DEBUG
-    #@post.tag_id = 0
-    # for DEBUG
-
-    @post.save!
-    redirect_to posts_all_path
+    if @post.save
+      #@post.save! バリデーションで不具合が出たため
+      redirect_to posts_all_path
+      flash[:notice] = '新規投稿されました。'
+    else
+      flash[:alert] = '投稿に失敗しました。'
+      render :new
+    end
   end
 
   def index
@@ -35,22 +36,28 @@ class Public::PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     if @post.user == current_user
-      render "edit"
+      render :edit
     else
       redirect_to user_mypage_path(current_user)
     end
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to user_mypage_path(current_user)
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to user_mypage_path(current_user)
+      flash[:notice] = '投稿の編集が完了しました。'
+    else
+      flash[:alert] = '投稿の編集に失敗しました。'
+      render :edit
+    end
   end
 
   def destroy
     post = Post.find(params[:id])
     post.destroy
     redirect_to user_mypage_path(current_user)
+    flash[:alert] = '投稿を削除しました。'
   end
 
   private

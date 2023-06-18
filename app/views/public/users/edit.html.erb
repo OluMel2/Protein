@@ -1,4 +1,6 @@
 <h2>プロフィール編集</h2>
+<%= render "public/posts/flash_message" %>
+
 <%= form_with model:@user do |f| %>
 <div>
   <%= f.label '名前' %>
@@ -6,7 +8,7 @@
 </div>
 <div>
   <%= f.label '運動頻度' %>
-  <%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], {include_blank: '選択ボックス'}, class: 'work_out' %>
+  <%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: 'work_out' %>
 </div>
 <div>
   <%= f.label '自己紹介' %>

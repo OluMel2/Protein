@@ -14,8 +14,13 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to user_mypage_path(current_user)
+    if @user.update(user_params)
+      redirect_to user_mypage_path(current_user)
+      flash[:notice] = 'ユーザー情報を更新しました。'
+    else
+      flash[:alert] =  'ユーザー情報の更新に失敗しました。'
+      render :edit
+    end
   end
 
 
@@ -24,7 +29,7 @@ class Public::UsersController < ApplicationController
     @user.update(is_deleted: true)
     @user.comments.destroy_all
     reset_session
-    #flash[:notice] = "またのご利用をお待ちしております。"
+    flash[:alert] = 'またのご利用をお待ちしております。'
     redirect_to root_path
   end
 
@@ -40,7 +45,8 @@ end
 #文字列になので、to_s。paramsと合わせる
 def ensure_user
   unless current_user.id.to_s == params[:id]
-    redirect_to posts_all_path, notice: '他のユーザーのプロフィール編集画面には遷移できません。'
+    redirect_to posts_all_path
+    flash[:alert] = '他のユーザーのプロフィール編集画面には遷移できません。'
   end
 end
 
@@ -48,7 +54,8 @@ end
 def ensure_guest_user
   @user = User.find(params[:id])
   if @user.name == "guestuser"
-    redirect_to posts_all_path, notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    redirect_to posts_all_path
+    flash[:alert] = 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
   end
 end
 

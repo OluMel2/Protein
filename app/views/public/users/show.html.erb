@@ -1,4 +1,5 @@
-<%= flash[:notice] %>
+<%= render 'error_message', user: @user %>
+<%= render "public/posts/flash_message" %>
 <!-- ユーザーの詳細 -->
 <div class="container">
   <h3><%= @user.name %></h3>

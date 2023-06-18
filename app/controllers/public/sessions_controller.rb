@@ -30,7 +30,8 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to posts_all_path, notice: 'guestuserでログインしました。'
+    redirect_to posts_all_path
+    flash[:notice] = 'ゲストユーザーでログインしました。'
   end
 
 
@@ -40,6 +41,7 @@ class Public::SessionsController < Devise::SessionsController
      @user = User.find_by(email: params[:user][:email])
      return if !@user
       if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == true)
+        flash[:alert] = "退会済みです。"
        redirect_to new_user_registration_path
       end
   end
