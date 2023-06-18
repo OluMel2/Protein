@@ -13,6 +13,13 @@ class User < ApplicationRecord
     super && (is_deleted == false)
   end
 
+  #ゲストユーザー
+  def self.guest
+    find_or_create_by!(name: 'guestuser' ,email: 'guest@guest.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   def get_profile_image
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/user_no_image.jpg')

@@ -1,4 +1,4 @@
-投稿一覧ページ
+<div>投稿一覧ページ</div>
 <%= form_tag posts_all_path, method: :get, class: 'boards__searchForm' do %>
   <%= select_tag :tag_id,
                  options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
