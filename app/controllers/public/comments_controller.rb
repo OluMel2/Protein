@@ -6,11 +6,13 @@ class Public::CommentsController < ApplicationController
     comment.post_id = post.id
     comment.save
     redirect_to post_path(post)
+    flash[:notice] = 'コメントを投稿しました。'
   end
 
   def destroy
     Comment.find(params[:id]).destroy
     redirect_to post_path(params[:post_id])
+    flash[:alert] = 'コメントを削除しました。'
   end
 
   private

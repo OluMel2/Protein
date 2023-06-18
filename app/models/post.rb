@@ -4,6 +4,14 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :tag
 
+  validates :product_name, presence: true
+  validates :tast, presence: true
+  validates :price, presence: true
+  validates :net, presence: true
+  validates :serving_size, presence: true
+  validates :calorie, presence: true
+  validates :protein, presence: true
+  validates :description, presence: true
 
   def get_image
     unless image.attached?
