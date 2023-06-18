@@ -1,17 +1,15 @@
 Rails.application.routes.draw do
 
 
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
-    #get 'users/show'
-    #get 'users/edit'
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
+
+ #ゲストログインユーザー
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
 
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
   sessions: 'admin/sessions'
@@ -36,7 +34,6 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
 
-
   end
 
 
@@ -55,6 +52,11 @@ Rails.application.routes.draw do
 
   end
 
+  namespace :admin do
+    get 'users/index'
+    get 'users/show'
+    get 'users/edit'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
