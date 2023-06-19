@@ -1,7 +1,6 @@
 <div class="container">
   <%= render "flash_message" %>
   <h1>投稿編集</h1>
-  <%= render 'error_message', post: @post %>
 
   <%= form_with model: @post, method: :patch do |f| %>
       <h6>商品名</h6>
