@@ -14,7 +14,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_all_path
       flash[:notice] = '新規投稿されました。'
     else
-      flash[:alert] = '投稿に失敗しました。'
+      flash[:alert] = '必要な情報が入力されていません。'
       render :new
     end
   end

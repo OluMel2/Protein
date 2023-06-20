@@ -1,37 +1,42 @@
-<h3>タグ一覧・追加</h3>
 
-</div>
- <%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
- <table>
-    <tr>
-      <th class='col-md-3'>
-        <%= f.label :name,'タグ名' %>
-      </th>
-      <th class='col-md-6'>
-        <%= f.text_field :name, :placeholder=>'タグ名' %>
-      </th>
-      <th class='col-md-3'>
-        <%= f.submit '登録',class: 'btn btn-sm btn-success' %>
-      </th>
-      <% end %>
-    </tr>
-  </table>
-  <table class="mt-3 ">
-    <thead>
-      <tr>
-        <th class="col-md-2">タグ</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tags.each do |tag| %>
-        <tr>
-          <td class="col-md-3"><%= tag.name %></td>
-          <td class="col-md-2"><%= link_to '編集する',edit_admin_tag_path(tag),class: "btn btn-sm btn-success" %></td>
-          <td class="col-md-6"><%= link_to '削除',admin_tag_path(tag),method: :delete,class: "btn btn-sm btn-danger" %></td>
-      <% end %>
-    </tbody>
-  </table>
-
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-lg-12">
+      <div class="pb-5">
+          <h2>タグ一覧・追加</h2>
+          <%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
+          <table>
+            <tr>
+              <th class='col-md-3'>
+                <%= f.label :name,'タグ名' %>
+              </th>
+              <th class='col-md-6'>
+                <%= f.text_field :name, :placeholder=>'タグ名' %>
+              </th>
+              <th class='col-md-3'>
+                <%= f.submit '登録',class: 'btn btn-sm btn-success' %>
+              </th>
+              <% end %>
+            </tr>
+          </table>
+          <table class="mt-3">
+            <thead>
+              <tr>
+                <th class="col-md-2">タグ</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tags.each do |tag| %>
+                <tr>
+                  <td class="col-md-3"><%= tag.name %></td>
+                  <td class="col-md-2"><%= link_to '編集する',edit_admin_tag_path(tag),class: "btn btn-sm btn-success" %></td>
+                  <td class="col-md-6"><%= link_to '削除',admin_tag_path(tag),method: :delete,class: "btn btn-sm btn-danger" %></td>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
 </div>
