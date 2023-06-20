@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-
+  before_action :authenticate_user!
 
 
   def new
@@ -14,13 +14,13 @@ class Public::PostsController < ApplicationController
       redirect_to posts_all_path
       flash[:notice] = '新規投稿されました。'
     else
-      flash[:alert] = '投稿に失敗しました。'
+      flash[:alert] = '必要な情報が入力されていません。'
       render :new
     end
   end
 
   def index
-    @posts = Post.joins(:user).where("users.is_deleted = false")
+    @posts = Post.joins(:user).where("users.is_deleted = false").page(params[:page])
     #退会したユーザーのデータは表示されない。#@posts = Post.all
     if params[:tag_id].present?
       @posts = @posts.where(tag_id: params[:tag_id])
@@ -48,7 +48,7 @@ class Public::PostsController < ApplicationController
       redirect_to user_mypage_path(current_user)
       flash[:notice] = '投稿の編集が完了しました。'
     else
-      flash[:alert] = '投稿の編集に失敗しました。'
+      flash[:alert] = '必要な情報が入力されていません。'
       render :edit
     end
   end

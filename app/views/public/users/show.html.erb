@@ -1,4 +1,4 @@
-<%= render 'error_message', user: @user %>
+
 <%= render "public/posts/flash_message" %>
 <!-- ユーザーの詳細 -->
 <div class="container">
@@ -13,24 +13,23 @@
    <p><%= link_to "プロフィール編集", user_information_path(@user.id), class: "btn btn-outline-secondary btn-sm edit_user_#{@user.id}" %></p>
    <% end %>
   <% end %>
-</div>
-
 
 <!-- ユーザーの投稿一覧 -->
-<% @posts.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image, width: "100×100" %>
-  <% end %>
-  <p>商品名：<%= link_to post.product_name, post_path(post.id) %></p>
-  <p>タイプ：<%= post.tag.name %></p>
-  <p>味：<%= post.tast %></p>
-  <p>価格：<%= post.price %></p>
-  <p>内容量：<%= post.net %></p>
-  <p>1杯あたりの量：<%= post.serving_size %></p>
-  <p>カロリー(1杯あたり)：<%= post.calorie %></p>
-  <p>タンパク質量(1杯あたり)：<%= post.protein%></p>
-  <p>説明：<%= post.description %></p>
-  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
+  <div class="d-flex flex-wrap">
+    <% @posts.each do |posts| %>
+    <div class="card col-3 h-100">
+      <%= link_to post_path(posts.id) do %>
+      <%= image_tag posts.get_image, size: "200x200" %><!--投稿した商品の画像-->
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to posts.product_name, post_path(posts.id) %></h5>
+        <p class="card-text">タイプ：<%= posts.tag.name %></p>
+        <p class="car-text">味：<%= posts.tast %></p>
+        <p class="car-text">ユーザーネーム：<%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
+        <p class="card-text"><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
 </div>
-<% end %>

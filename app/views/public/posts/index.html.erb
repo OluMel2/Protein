@@ -1,30 +1,34 @@
- <%= render "flash_message" %>
-<div>投稿一覧ページ</div>
-<%= form_tag posts_all_path, method: :get, class: 'boards__searchForm' do %>
-  <%= select_tag :tag_id,
-                 options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                 {
-                   prompt: '全てのレビュー',
-                   onchange: 'submit(this.form);'
-                 }
-  %>
-<% end %>
-<% @posts.each do |posts| %>
-<div>
-  <p>ユーザーネーム：<%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
-  <%= link_to post_path(posts.id) do %>
-  <%= image_tag posts.get_image, width: "100×100" %><!--投稿した商品の画像-->
+<%= render "flash_message" %>
+<div class="container">
+  <div class="col-md">
+    <div>投稿一覧ページ</div>
+    <%= form_tag posts_all_path, method: :get, class: 'boards__searchForm' do %>
+    <%= select_tag :tag_id,
+                   options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                   {
+                     prompt: '全てのレビュー',
+                     onchange: 'submit(this.form);'
+                   }
+    %>
   <% end %>
-  <p>商品名：<%= link_to posts.product_name, post_path(posts.id) %></p>
-  <p>タイプ：<%= posts.tag.name %></p>
-  <p>味：<%= posts.tast %></p>
-  <p>価格：<%= posts.price %></p>
-  <p>内容量：<%= posts.net %></p>
-  <p>1杯あたりの量：<%= posts.serving_size %></p>
-  <p>カロリー(1杯あたり)：<%= posts.calorie %></p>
-  <p>タンパク質量(1杯あたり)：<%= posts.protein%></p>
-  <p>説明：<%= posts.description %></p>
-  <p><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+  </div>
+  <div class="d-flex flex-wrap">
+    <% @posts.each do |posts| %>
+    <div class="card col-3 h-100">
+      <%= link_to post_path(posts.id) do %>
+      <%= image_tag posts.get_image, size: "200x200" %><!--投稿した商品の画像-->
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to posts.product_name, post_path(posts.id) %></h5>
+        <p class="card-text">タイプ：<%= posts.tag.name %></p>
+        <p class="car-text">味：<%= posts.tast %></p>
+        <p class="car-text">ユーザーネーム：<%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
+        <p class="card-text"><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %>
 </div>
-<% end %>
+
 
