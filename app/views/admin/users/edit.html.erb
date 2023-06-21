@@ -15,16 +15,16 @@
               <th><%= f.text_field :name, size: "40" %></th>
             </tr>
             <tr>
-              <th>運動頻度</th>
-              <td><%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: 'work_out', size: "40" %></td>
-            </tr>
-            <tr>
               <th>自己紹介</th>
-              <td><%= f.text_field :introduction, size: "40" %></td>
+              <th><%= f.text_area :introduction, size: "40" %></th>
             </tr>
             <tr>
               <th>メールアドレス</th>
-              <td><%= f.text_field :email, size: "40" %></td>
+              <th><%= f.text_field :email, size: "40" %></th>
+            </tr>
+            <tr>
+              <th>運動頻度</th>
+              <th><%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: 'work_out' %></th>
             </tr>
             <tr>
               <th>会員ステータス</th>

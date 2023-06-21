@@ -1,34 +1,30 @@
 <%= render "public/posts/flash_message" %>
-<div class="container">
-  <div class="row mt-4">
-    <div class="col-lg-12">
-      <div class="text-center pb-5">
-        <div class = "pt-5">
-          <h2 class="mb-4">プロフィール編集</h2>
-          <%= form_with model:@user do |f| %>
-          <div>
-            <%= f.label 'プロフィール画像' %>
-            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", size: "20" %>
-          </div>
-          <div>
-            <%= f.label '名前' %>
-            <%= f.text_field :name, placeholder:"名前", size: "20" %>
-          </div>
-          <div>
-            <%= f.label '運動頻度' %>
-            <%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: 'work_out' %>
-          </div>
-          <div>
-            <%= f.label '自己紹介' %>
-            <%= f.text_field :introduction, placeholder:"自己紹介", size: "20" %>
-          </div>
-          <div>
-            <%= f.submit "変更を保存" %>
-            <%= link_to "退会する", users_quit_path, class: "btn btn-md btn-danger" %>
-            <% end %>
-          </div>
-        </div>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>プロフィール編集</h2>
+      <%= form_with model:@user do |f| %>
+      <div class="form-group">
+        <%= f.label 'プロフィール画像' %>
+        <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
       </div>
+      <div class="form-group">
+        <%= f.label '名前' %>
+        <%= f.text_field :name, placeholder:"名前", class: "form-control name" %>
+      </div>
+      <div class="form-group">
+        <%= f.label '自己紹介' %>
+        <%= f.text_area :introduction, class: "form-control introduction" %>
+      </div>
+      <div class="form-group">
+        <%= f.label '運動頻度' %>
+        <%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: 'work_out' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "変更を保存", class: "btn btn-md btn-success" %>
+        <%= link_to "退会する", users_quit_path, class: "btn btn-md btn-danger" %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
