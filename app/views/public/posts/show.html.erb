@@ -10,11 +10,11 @@
       <td><%= @post.product_name %></td>
       <td><%= @post.tag.name %></td>
       <td><%= @post.tast %></td>
-      <td><%= @post.price%></td>
-      <td><%= @post.net%></td>
-      <td><%= @post.serving_size %></td>
-      <td><%= @post.calorie %></td>
-      <td><%= @post.protein %></td>
+      <td>¥<%= @post.price.to_s(:delimited) %>円</td>
+      <td><%= @post.net.to_s(:delimited) %>g</td>
+      <td><%= @post.serving_size %>g</td>
+      <td><%= @post.calorie %>kcal</td>
+      <td><%= @post.protein %>g</td>
       <td><%= @post.description %></td>
       <td>
         <% if @post.user == current_user %>
