@@ -2,7 +2,7 @@
   <h2>管理者トップページ</h2>
   <div class="d-flex flex-wrap">
     <% @posts.each do |posts| %>
-    <div class="card col-3 h-100">
+    <div class="card col-3 h-100 text-center">
       <%= link_to admin_post_path(posts.id) do %>
       <%= image_tag posts.get_image, size: "200x200" %><!--投稿した商品の画像-->
       <% end %>
@@ -10,13 +10,16 @@
         <h5 class="card-title"><%= link_to posts.product_name, admin_post_path(posts.id) %></h5>
         <p class="card-text">タイプ：<%= posts.tag.name %></p>
         <p class="car-text">味：<%= posts.tast %></p>
+        <p class="car-text">タンパク質量：<%= posts.protein %>g</p>
         <p class="car-text">ユーザーネーム：<%= link_to posts.user.name, admin_user_path(posts.user.id) %></p>
         <p class="card-text"><%= link_to "#{posts.comments.count} コメント", admin_post_path(posts.id) %></p>
       </div>
     </div>
     <% end %>
   </div>
-  <%= paginate @posts %>
+  <div class="m-2">
+    <%= paginate @posts %>
+  </div>
 </div>
 
 
