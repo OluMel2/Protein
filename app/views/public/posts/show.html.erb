@@ -1,50 +1,74 @@
 <%= render "flash_message" %>
-<h2>Post detail</h2>
-<table class="table">
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to @user.name, user_mypage_path(@post.user.id) %>
-      </td>
-      <td><%= image_tag @post.get_image, width: "100×100" %></td>
-      <td><%= @post.product_name %></td>
-      <td><%= @post.tag.name %></td>
-      <td><%= @post.tast %></td>
-      <td><%= @post.price%></td>
-      <td><%= @post.net%></td>
-      <td><%= @post.serving_size %></td>
-      <td><%= @post.calorie %></td>
-      <td><%= @post.protein %></td>
-      <td><%= @post.description %></td>
-      <td>
-        <% if @post.user == current_user %>
-        <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
+<div class="container">
+  <div>
+    <h2>商品詳細</h2>
+    <div class="d-block mx-auto">
+      <%= link_to @user.name, user_mypage_path(@post.user.id) %>
+    </div>
+
+    <div class="rounded float-left">
+      <%= image_tag @post.get_image, width: "250×250" %>
+    </div>
+
+    <div class="form-group form-inline input-group-sm pt-5">
+      <label class="col-md-3 control-label"><strong>商品名</strong></label>
+      <%= @post.product_name %>
+      <div class="col-md-1"></div>
+      <label class="col-md-2 control-label"><strong>タイプ</strong></label>
+      <%= @post.tag.name %>
+      <div class="col-md-2"></div>
+      <label class="col-md-1 control-label"><strong>味</strong></label>
+      <%= @post.tast %>
+    </div>
+    <div class="form-group form-inline input-group-sm">
+      <label class="col-md-3 control-label"><strong>価格</strong></label>
+      ¥<%= @post.price.to_s(:delimited) %>円
+      <div class="col-md-1"></div>
+      <label class="col-md-2 control-label"><strong>内容量</strong></label>
+      <%= @post.net.to_s(:delimited) %>g
+      <div class="col-md-1"></div>
+      <label class="col-md-2 control-label"><strong>1食の量</strong></label>
+      <%= @post.serving_size %>g
+    </div>
+    <div class="form-group form-inline input-group-sm">
+      <label class="col-md-3 control-label"><strong>カロリー(1食分の量)</strong></label>
+      <%= @post.calorie %>kcal
+      <div class="col-sm-1"></div>
+      <label class="col-md-3 control-label"><strong>タンパク質量(1食分の量)</strong></label>
+      <%= @post.protein %>g
+    </div>
+  </div>
+  <div>
+    <h5><strong>説明</strong></h5>
+    <%= @post.description %>
+  </div>
+  <div class="text-center">
+    <% if @post.user == current_user %>
+    <%= link_to "Edit", edit_post_path(@post.id), class: "btn btn-sm btn-success" %>
+    <% end %>
+    <% if @post.user == current_user %>
+    <%= link_to "Destroy", post_path(@post), class: "btn btn-sm btn-danger", method: :delete %>
+    <% end %>
+  </div>
+  <div class="p-5">
+    <div>
+      <p>コメント件数：<%= @post.comments.count %></p>
+      <div class="table">
+        <% @post.comments.each do |comment| %>
+        <><%= image_tag comment.user.get_profile_image, width: "100×100" %></p>
+        <%= link_to comment.user.name, user_mypage_path(comment.user.id) %>
+        <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+        <% if comment.user == current_user %>
+        <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
         <% end %>
-      </td>
-      <td>
-        <% if @post.user == current_user %>
-        <%= link_to "Destroy", post_path(@post), class: "btn btn-sm btn-danger", method: :delete %>
         <% end %>
-      </td>
-      <td>
-        <div>
-          <p>コメント件数：<%= @post.comments.count %></p>
-          <% @post.comments.each do |comment| %>
-            <p><%= image_tag comment.user.get_profile_image, width: "100×100" %></p>
-            <%= link_to comment.user.name, user_mypage_path(comment.user.id) %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-            <% if comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
-            <% end %>
-          <% end %>
-        </div>
-        <div>
-          <%= form_with model: [@post, @comment] do |f| %>
-            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-            <%= f.submit "送信する" %>
-          <% end %>
-        </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= form_with model: [@post, @comment] do |f| %>
+      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
+</div>
