@@ -2,7 +2,7 @@
 <div class="container">
   <div class="col-md">
     <h2>投稿一覧ページ</h2>
-    <%= form_tag posts_all_path, method: :get, class: 'boards__searchForm' do %>
+    <%= form_tag posts_all_path, method: :get, class: "boards__searchForm" do %>
     <%= select_tag :tag_id,
                    options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                    {
@@ -11,6 +11,16 @@
                    }
     %>
   <% end %>
+
+    <%= search_form_for @q, url: posts_all_path, method: :get, class: "search-form" do |f| %>
+    <ul class = "navbar-nav ml-auto">
+      <li class="search-nav-content">
+        <%= f.number_field :price_gteq, class: "input-price", placeholder: "¥0~" %>
+        <%= f.number_field :price_lt, class: "input-price", placeholder: "¥~15,000" %>
+        <p class="btn btn-sm pt-3"><%= f.submit '検索する' %></p>
+      </li>
+    </ul>
+    <% end %>
   </div>
   <div class="d-flex flex-wrap">
     <% @posts.each do |posts| %>

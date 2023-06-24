@@ -20,4 +20,8 @@ class Post < ApplicationRecord
     end
     image
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["price"]
+  end
 end
