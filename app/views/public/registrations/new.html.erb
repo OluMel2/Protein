@@ -6,21 +6,21 @@
           <h2 class="mb-4">新規登録</h2>
           <%= form_with model: @user, url: user_registration_path do |f| %>
   　　　　　　<div class="field">
-    　　　　　　<div class="col-12 col-form-label">名前</div>
+    　　　　　　<div class="col-12 col-form-label">名前<span class="text-danger">*</span></div>
             <%= f.text_field :name %>
           </div>
           <div class="field">
-            <div class="col-12 pt-4 col-form-label">メールアドレス</div>
+            <div class="col-12 pt-4 col-form-label">メールアドレス<span class="text-danger">*</span></div>
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
           <div class="field">
-            <div class="col-12 pt-4 col-form-label">パスワード(6文字以上)</div>
+            <div class="col-12 pt-4 col-form-label">パスワード(6文字以上)<span class="text-danger">*</span></div>
             <% if @minimum_password_length %>
             <% end %>
             <%= f.password_field :password, autocomplete: "new-password" %>
           </div>
           <div class="field">
-          　<div class="col-12 col-form-label">パスワード(確認)</div>
+          　<div class="col-12 col-form-label">パスワード(確認)<span class="text-danger">*</span></div>
             <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
           </div>
           <div class="actions pt-5">
