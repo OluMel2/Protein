@@ -8,10 +8,10 @@
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= link_to posts.product_name, admin_post_path(posts.id) %></h5>
-        <p class="card-text">タイプ：<%= posts.tag.name %></p>
-        <p class="car-text">味：<%= posts.tast %></p>
-        <p class="car-text">タンパク質量：<%= posts.protein %>g</p>
-        <p class="car-text">ユーザーネーム：<%= link_to posts.user.name, admin_user_path(posts.user.id) %></p>
+        <p class="card-text"><strong>タイプ</strong>：<%= posts.tag.name %></p>
+        <p class="car-text"><strong>味</strong>：<%= posts.tast %></p>
+        <p class="car-text"><strong>タンパク質量</strong>：<%= posts.protein %>g</p>
+        <p class="car-text"><%= link_to posts.user.name, admin_user_path(posts.user.id) %></p>
         <p class="card-text"><%= link_to "#{posts.comments.count} コメント", admin_post_path(posts.id) %></p>
       </div>
     </div>

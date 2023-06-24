@@ -1,9 +1,13 @@
-<header class = "border-bottom">
+<header>
   <nav class = "navbar navbar-expand-lg navbar-dark">
    <div class = "container">
-    <%= link_to root_path do %>
-    <%= image_tag 'ProteinLogo.png', width: '10%', height: '15%' %>
+    <%= link_to root_path, style:"width:70px;height:70px" do %>
+    <%= image_tag 'ProteinLogo.png', width: '100%', height: '100%' %>
     <% end %>
+    <button class="navbar-toggler rounded float-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class = "navbar-nav ml-auto">
      <% if admin_signed_in? %>
      <li>
@@ -56,6 +60,7 @@
      </li>
     <% end %>
    </ul>
+   </div>
   </div>
  </nav>
 </header>
