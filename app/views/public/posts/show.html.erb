@@ -11,7 +11,8 @@
     <div class="form-group form-inline input-group-sm pt-5">
       <label class="col-md-3 control-label"><strong>商品名</strong></label>
       <%= @post.product_name %>
-      <div class="col-md-1"></div>
+    </div>
+    <div class="form-group form-inline input-group-sm">
       <label class="col-md-2 control-label"><strong>タイプ</strong></label>
       <%= @post.tag.name %>
       <div class="col-md-2"></div>
@@ -53,12 +54,12 @@
     <div>
       <div class="p-5">
         <% @post.comments.each do |comment| %>
-        <div class="form-group form-inline input-group-sm p-2">
+        <div class="form-group form-inline input-group-md p-2">
           <%= image_tag comment.user.get_profile_image, width: "100×100" %>
           <%= link_to comment.user.name, user_mypage_path(comment.user.id) %>
-          <label class="col-md-3 control-label"><%= comment.created_at.strftime('%Y/%m/%d') %></label>
-          <label class="col-md-3 control-label"><%= comment.comment %></label>
-          <div>
+          <label class="col-md-5 control-label"><%= comment.created_at.strftime('%Y/%m/%d') %></label>
+          <label class="col-md-5 control-label"><%= comment.comment %></label>
+          <div class="pl-4">
             <% if comment.user == current_user %>
             <%= link_to "削除", post_comment_path(comment.post, comment), class: "btn btn-sm btn-danger", method: :delete %>
             <% end %>
@@ -71,7 +72,9 @@
   <div class="text-center pb-5">
     <%= form_with model: [@post, @comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに", style: "width:40%" %>
-      <%= f.submit "送信する" %>
+      <div class="pd-3">
+        <%= f.submit "送信する" %>
+      </div>
     <% end %>
   </div>
 </div>

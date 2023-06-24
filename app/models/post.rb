@@ -13,6 +13,8 @@ class Post < ApplicationRecord
   validates :protein, presence: true
   validates :description, presence: true
 
+
+
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
