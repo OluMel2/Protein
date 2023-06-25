@@ -1,18 +1,25 @@
 <!-- ユーザーの詳細 -->
 <div class="container">
   <h2>ユーザー詳細ページ</h2>
-  <strong>名前</strong>
   <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image, width: "100×100" %>
-  <strong>運動頻度</strong>
-  <%= @user.work_out %>
-  <strong>自己紹介</strong>
-  <%= @user.introduction %>
-  <p><%= link_to "プロフィール編集", edit_admin_user_path(@user.id), class: "btn btn-outline-secondary btn-sm" %></p>
+  <div class="rounded float-left mr-5 mb-5">
+    <%= image_tag @user.get_profile_image, width: "100×100" %>
+  </div>
+  <div class="form-group form-inline input-group-sm pt-5 pl-5">
+    <label class="col-md-3 control-label"><strong>運動頻度</strong></label>
+    <%= @user.work_out %>
+  </div>
+  <div class="form-group form-inline input-group-sm pt-2 pl-5">
+    <label class="col-md-3 control-label text-left"><strong>自己紹介</strong></label>
+    <p class="pl-5"><%= @user.introduction %></p>
+  </div>
+  <div class="text-right">
+    <p><%= link_to "プロフィール編集", edit_admin_user_path(@user.id), class: "btn btn-outline-secondary btn-sm edit_user_#{@user.id}" %></p>
+  </div>
 <!-- ユーザーの投稿一覧 -->
   <div class="d-flex flex-wrap">
     <% @posts.each do |posts| %>
-    <div class="card col-3 h-100">
+    <div class="card col-3 h-100 text-center">
       <%= link_to admin_post_path(posts.id) do %>
       <%= image_tag posts.get_image, size: "200x200" %><!--投稿した商品の画像-->
       <% end %>
@@ -20,12 +27,13 @@
         <h5 class="card-title"><%= link_to posts.product_name, admin_post_path(posts.id) %></h5>
         <p class="card-text">タイプ：<%= posts.tag.name %></p>
         <p class="car-text">味：<%= posts.tast %></p>
-        <p class="car-text">ユーザーネーム：<%= link_to posts.user.name, admin_user_path(posts.user.id) %></p>
         <p class="card-text"><%= link_to "#{posts.comments.count} コメント", admin_post_path(posts.id) %></p>
       </div>
     </div>
     <% end %>
     </div>
+    <div class="m-2">
     <%= paginate @posts %>
+    </div>
 </div>
 

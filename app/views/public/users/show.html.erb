@@ -1,6 +1,6 @@
-<%= render "public/posts/flash_message" %>
 <!-- ユーザーの詳細 -->
 <div class="container">
+  <%= render "public/posts/flash_message" %>
   <h3><%= @user.name %></h3>
   <div class="rounded float-left mr-5 mb-5">
     <%= image_tag @user.get_profile_image, width: "100×100" %>
@@ -34,7 +34,7 @@
         <p class="card-text"><strong>タイプ</strong>：<%= posts.tag.name %></p>
         <p class="car-text"><strong>味</strong>：<%= posts.tast %></p>
         <p class="car-text"><strong>タンパク質量</strong>：<%= posts.protein %>g</p>
-        <p class="car-text"><%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
+        <p class="car-text"><%= posts.user.name %></p>
         <p class="card-text"><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
       </div>
     </div>
@@ -44,3 +44,6 @@
     <%= paginate @posts %>
   </div>
 </div>
+
+
+

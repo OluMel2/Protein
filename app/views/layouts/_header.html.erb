@@ -56,7 +56,9 @@
      </li>
 
      <li>
-       <%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'nav-link text-warning', method: :post %>
+       <%=  link_to users_guest_sign_in_path, class: 'nav-link text-warning', method: :posts do %>
+       <i class="fas fa-user-tie fa"></i> ゲストログイン
+       <% end %>
      </li>
     <% end %>
    </ul>
