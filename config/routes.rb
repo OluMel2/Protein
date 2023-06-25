@@ -21,7 +21,6 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
 
     get 'posts/all' => 'posts#index'
-    #get 'posts/information/edit' => 'posts#edit'
 
 
     resource :user, only: [:update]
@@ -50,12 +49,6 @@ Rails.application.routes.draw do
 
     resources :tags, only: [:index, :create, :edit, :update, :destroy]
 
-  end
-
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
