@@ -27,6 +27,9 @@
           <div class="actions pt-5">
             <%= f.submit "新規登録", class: 'btn btn-sm btn-primary' %>
           </div>
+          <div class="p-4">
+            アカウントをお持ちの方は<%= link_to "ログイン" , new_user_session_path %>してください。
+          </div>
           <% end %>
         </div>
       </div>
