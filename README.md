@@ -25,7 +25,9 @@
 * 実際の使用者の口コミが気になるとき
 
 ## 設計書
-
+* [ER図](https://drive.google.com/file/d/1vEoegqhWKo4VO3QsiA32KyW7oA8r_4OU/view?usp=sharing)
+* [テーブル定義書](https://docs.google.com/spreadsheets/d/1T0XYZFZNXh0W4AJq29HLYqop9Ou3ukn7pvbTfvDDkTY/edit?usp=sharing)
+* [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1C4fsFvqWCEMdZo7tjyJ2dKanfAJTeUiYuZpPyQzKvk8/edit?usp=sharing)
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -35,3 +37,7 @@
 - IDE：Cloud9
 
 ## 使用素材
+* [Adobe Stock](https://stock.adobe.com/jp/)
+* [PHOTOM](https://photom.xyz/)
+* [illustAC](https://www.ac-illust.com/)
+* [いらすとや](https://www.irasutoya.com/)
