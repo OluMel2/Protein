@@ -23,6 +23,9 @@
           <div class="actions">
             <%= f.submit "ログイン", class: 'btn btn-sm btn-primary' %>
           </div>
+          <div class="p-4">
+            アカウントをお持ちでない場合は<%= link_to "こちら", new_user_registration_path %></u>  から
+          </div>
         　<% end %>
         </div>
       </div>
