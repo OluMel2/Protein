@@ -7,13 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
   email: 'admin@admin',
-  password: 'admin403'
+  password: 'admin123'
   )
 
-Tag.create([
+Tag.create!(
+  [
   { name: 'WPC製法' },
   { name: 'WPI製法' },
   { name: 'WPH製法'},
   { name: 'カゼインプロテイン'},
   { name: 'ソイプロテイン'}
-  ])
+  ]
+  )

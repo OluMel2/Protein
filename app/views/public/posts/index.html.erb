@@ -1,8 +1,8 @@
-<%= render "flash_message" %>
 <div class="container">
+  <%= render "flash_message" %>
   <div class="col-md">
     <h2>投稿一覧ページ</h2>
-    <%= form_tag posts_all_path, method: :get, class: 'boards__searchForm' do %>
+    <%= form_tag posts_all_path, method: :get, class: "boards__searchForm" do %>
     <%= select_tag :tag_id,
                    options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                    {
@@ -11,24 +11,38 @@
                    }
     %>
   <% end %>
+
+    <%= search_form_for @q, url: posts_all_path, method: :get, class: "search-form" do |f| %>
+    <ul class = "navbar-nav ml-auto">
+      <li class="search-nav-content">
+        <%= f.number_field :price_gteq, class: "input-price", placeholder: "¥0~" %>
+        <%= f.number_field :price_lt, class: "input-price", placeholder: "¥~15,000" %>
+        <p class="btn btn-sm pt-3"><%= f.submit '検索する' %></p>
+      </li>
+    </ul>
+    <% end %>
   </div>
   <div class="d-flex flex-wrap">
     <% @posts.each do |posts| %>
-    <div class="card col-3 h-100">
+    <div class="card col-3 h-100 text-center">
       <%= link_to post_path(posts.id) do %>
       <%= image_tag posts.get_image, size: "200x200" %><!--投稿した商品の画像-->
       <% end %>
       <div class="card-body">
         <h5 class="card-title"><%= link_to posts.product_name, post_path(posts.id) %></h5>
-        <p class="card-text">タイプ：<%= posts.tag.name %></p>
-        <p class="car-text">味：<%= posts.tast %></p>
-        <p class="car-text">ユーザーネーム：<%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
+        <p class="card-text"><strong>タイプ</strong>：<%= posts.tag.name %></p>
+        <p class="car-text"><strong>味</strong>：<%= posts.tast %></p>
+        <p class="car-text"><strong>タンパク質量</strong>：<%= posts.protein %>g</p>
+        <p class="car-text"><%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
         <p class="card-text"><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
       </div>
     </div>
     <% end %>
   </div>
-  <%= paginate @posts %>
+  <div class="m-2">
+    <%= paginate @posts %>
+  </div>
+
 </div>
 
 

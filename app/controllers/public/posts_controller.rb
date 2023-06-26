@@ -20,8 +20,10 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.joins(:user).where("users.is_deleted = false").page(params[:page])
-    #退会したユーザーのデータは表示されない。#@posts = Post.all
+    @q = Post.ransack(params[:q])
+    @posts = Post.joins(:user).where("users.is_deleted = false")
+    #退会したユーザーのデータは表示されない。
+    @posts = @q.result(distinct: true).page(params[:page]).order(created_at: :desc)
     if params[:tag_id].present?
       @posts = @posts.where(tag_id: params[:tag_id])
     end

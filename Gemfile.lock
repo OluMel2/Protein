@@ -86,10 +86,15 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+<<<<<<< HEAD
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+=======
+    devise-i18n (1.11.0)
+      devise (>= 4.9.0)
+>>>>>>> develop
     erubi (1.12.0)
     ffi (1.15.5)
     globalid (1.1.0)
@@ -184,6 +189,10 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rake (13.0.6)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -259,7 +268,11 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+<<<<<<< HEAD
   dotenv-rails
+=======
+  devise-i18n
+>>>>>>> develop
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   kaminari (~> 1.2.1)
@@ -271,6 +284,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.7, >= 6.1.7.3)
+  ransack
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring

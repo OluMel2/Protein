@@ -1,33 +1,64 @@
-<h2>Admin Post detail</h2>
-<table class="table">
-  <tbody>
-    <tr>
-      <td>
-        <%= link_to @user.name, admin_user_path(@post.user.id) %>
-      </td>
-      <td><%= image_tag @post.get_image, width: "100×100" %></td>
-      <td><%= @post.product_name %></td>
-      <td><%= @post.tast %></td>
-      <td><%= @post.price%></td>
-      <td><%= @post.net%></td>
-      <td><%= @post.serving_size %></td>
-      <td><%= @post.calorie %></td>
-      <td><%= @post.protein %></td>
-      <td><%= @post.description %></td>
-      <td>
-        <%= link_to "Destroy", admin_post_path(@post), class: "btn btn-sm btn-danger", method: :delete %>
-      </td>
-      <td>
-        <div>
-          <p>コメント件数：<%= @post.comments.count %></p>
-          <% @post.comments.each do |comment| %>
-            <p><%= image_tag comment.user.get_profile_image, width: "100×100" %></p>
-            <%= link_to comment.user.name, admin_user_path(comment.user.id) %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-            <%= link_to "削除", admin_post_comment_path(comment.post, comment), method: :delete %>
-          <% end %>
+<div class="container">
+  <div class="p-5">
+    <h2>Admin Post detail</h2>
+    <div class="d-block mx-auto">
+      <%= link_to @user.name, admin_user_path(@post.user.id) %>
+    </div>
+    <div class="rounded float-left mr-5">
+      <%= image_tag @post.get_image, size: "250x250" %>
+    </div>
+    <div class="form-group form-inline input-group-sm pt-5">
+      <label class="col-md-3 control-label"><strong>商品名</strong></label>
+      <div class="text-secondary"><%= @post.product_name %></div>
+    </div>
+    <div class="form-group form-inline input-group-sm">
+      <label class="col-md-2 control-label"><strong>タイプ</strong></label>
+      <div class="text-secondary"><%= @post.tag.name %></div>
+      <div class="col-md-2"></div>
+      <label class="col-md-1 control-label"><strong>味</strong></label>
+      <div class="text-secondary"><%= @post.tast %></div>
+    </div>
+    <div class="form-group form-inline input-group-sm">
+      <label class="col-md-3 control-label"><strong>価格</strong></label>
+      <div class="text-secondary">¥<%= @post.price.to_s(:delimited) %>円</div>
+      <div class="col-md-1"></div>
+      <label class="col-md-2 control-label"><strong>内容量</strong></label>
+      <div class="text-secondary"><%= @post.net.to_s(:delimited) %>g/ml</div>
+      <div class="col-md-1"></div>
+      <label class="col-md-2 control-label"><strong>1食の量</strong></label>
+      <div class="text-secondary"><%= @post.serving_size %>g</div>
+    </div>
+    <div class="form-group form-inline input-group-sm">
+      <label class="col-md-3 control-label"><strong>カロリー(1食分の量)</strong></label>
+      <div class="text-secondary"><%= @post.calorie %>kcal</div>
+      <div class="col-sm-1"></div>
+      <label class="col-md-4 control-label"><strong>タンパク質量(1食分の量)</strong></label>
+      <div class="text-secondary"><%= @post.protein %>g</div>
+    </div>
+  </div>
+  <div class="m-5 text-center">
+    <h5><strong>説明</strong></h5>
+    <%= @post.description %>
+  </div>
+  <div class="text-center pt-3">
+    <%= link_to "削除", admin_post_path(@post), class: "btn btn-sm btn-danger", method: :delete %>
+  </div>
+  <div class="p-5">
+    <p>コメント件数：<%= @post.comments.count %></p>
+    <div>
+      <div class="p-5">
+        <% @post.comments.each do |comment| %>
+        <div class="form-group form-inline input-group-sm p-2">
+          <%= image_tag comment.user.get_profile_image, width: "100×100" %>
+          <%= link_to comment.user.name, admin_user_path(comment.user.id) %>
+          <label class="col-md-3 control-label"><%= comment.created_at.strftime('%Y/%m/%d') %></label>
+          <label class="col-md-3 control-label"><%= comment.comment %></label>
+          <div>
+            <%= link_to "削除", admin_post_comment_path(comment.post, comment), class: "btn btn-sm btn-danger", method: :delete %>
+          </div>
         </div>
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
