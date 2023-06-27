@@ -17,3 +17,8 @@ header, footer {
   background-color: #747474;
 }
 
+
+.pagination {
+  justify-content: center;
+}
+
