@@ -1,6 +1,6 @@
-<div class='container'>
+<div class="container">
   <%= render "public/posts/flash_message" %>
-  <div class='row'>
+  <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>プロフィール編集</h2>
       <%= form_with model:@user do |f| %>
@@ -18,11 +18,11 @@
       </div>
       <div class="form-group">
         <%= f.label '運動頻度' %>
-        <%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: 'work_out' %>
+        <%= f.select :work_out, ['ほぼ毎日', '週に3〜4', '週に2回', '週に1回', '月に1〜2', 'ほとんどしない'], class: "work_out" %>
       </div>
       <div class="form-group">
-        <%= f.submit "変更を保存", class: "btn btn-md btn-success" %>
-        <%= link_to "退会する", users_quit_path, class: "btn btn-md btn-danger" %>
+        <%= f.submit '変更を保存', class: "btn btn-md btn-success" %>
+        <%= link_to '退会する', users_quit_path, class: "btn btn-md btn-danger" %>
       </div>
       <% end %>
     </div>

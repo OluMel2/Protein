@@ -7,13 +7,13 @@
           <%= form_with model: @tag, url: admin_tags_path, local: true do |f| %>
           <table>
             <tr>
-              <th class='col-md-3'>
+              <th class="col-md-3">
                 <%= f.label :name,'タグ名' %>
               </th>
-              <th class='col-md-6'>
+              <th class="col-md-6">
                 <%= f.text_field :name, :placeholder=>'タグ名' %>
               </th>
-              <th class='col-md-3'>
+              <th class="col-md-3">
                 <%= f.submit '登録',class: 'btn btn-sm btn-success' %>
               </th>
               <% end %>
