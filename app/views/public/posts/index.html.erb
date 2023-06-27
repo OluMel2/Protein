@@ -1,6 +1,6 @@
 <div class="container">
   <%= render "flash_message" %>
-  <div class="col-md">
+  <div class="col-md p-3">
     <h2>投稿一覧ページ</h2>
     <%= form_tag posts_all_path, method: :get, class: "boards__searchForm" do %>
     <%= select_tag :tag_id,
@@ -11,7 +11,6 @@
                    }
     %>
   <% end %>
-
     <%= search_form_for @q, url: posts_all_path, method: :get, class: "search-form" do |f| %>
     <ul class="navbar-nav ml-auto">
       <li class="search-nav-content">
