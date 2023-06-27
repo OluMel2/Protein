@@ -54,7 +54,7 @@
           <label class="col-md-3 control-label"><%= comment.created_at.strftime('%Y/%m/%d') %></label>
           <label class="col-md-3 control-label"><%= comment.comment %></label>
           <div>
-            <%= link_to "削除", admin_post_comment_path(comment.post, comment), class: "btn btn-sm btn-danger", method: :delete %>
+            <%= link_to '削除', admin_post_comment_path(comment.post, comment), class: "btn btn-sm btn-danger", method: :delete %>
           </div>
         </div>
         <% end %>

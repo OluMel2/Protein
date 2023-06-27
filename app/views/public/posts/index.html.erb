@@ -13,7 +13,7 @@
   <% end %>
 
     <%= search_form_for @q, url: posts_all_path, method: :get, class: "search-form" do |f| %>
-    <ul class = "navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto">
       <li class="search-nav-content">
         <%= f.number_field :price_gteq, class: "input-price", placeholder: "¥0~" %>
         <%= f.number_field :price_lt, class: "input-price", placeholder: "¥~15,000" %>
@@ -42,7 +42,6 @@
   <div class="m-2">
     <%= paginate @posts %>
   </div>
-
 </div>
 
 
