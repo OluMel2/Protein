@@ -1,0 +1,21 @@
+<!-- ユーザーの投稿一覧 -->
+  <div class="d-flex flex-wrap">
+    <% @posts.each do |posts| %>
+    <div class="card col-3 h-100 text-center">
+      <%= link_to post_path(posts.id) do %>
+      <%= image_tag posts.get_image, size: "200x200" %><!--投稿した商品の画像-->
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to posts.product_name, post_path(posts.id) %></h5>
+        <p class="card-text"><strong>タイプ</strong>：<%= posts.tag.name %></p>
+        <p class="car-text"><strong>味</strong>：<%= posts.tast %></p>
+        <p class="car-text"><strong>タンパク質量</strong>：<%= posts.protein %>g</p>
+        <p class="car-text"><%= link_to posts.user.name, user_mypage_path(posts.user.id) %></p>
+        <p class="card-text"><%= link_to "#{posts.comments.count} コメント", post_path(posts.id) %></p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <div class="m-2">
+    <%= paginate @posts %>
+  </div>
