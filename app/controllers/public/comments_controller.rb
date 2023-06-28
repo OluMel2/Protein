@@ -4,9 +4,13 @@ class Public::CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     comment = current_user.comments.new(comment_params)
     comment.post_id = post.id
-    comment.save
+  if comment.save
     redirect_to post_path(post)
     flash[:notice] = 'コメントを投稿しました。'
+  else
+    flash[:alert] = 'コメントを投稿できませんでした。'
+    redirect_to post_path(post)
+  end
   end
 
   def destroy

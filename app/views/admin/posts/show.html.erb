@@ -41,12 +41,12 @@
     <%= @post.description %>
   </div>
   <div class="text-center pt-3">
-    <%= link_to "削除", admin_post_path(@post), class: "btn btn-sm btn-danger", method: :delete %>
+    <%= link_to "削除", admin_post_path(@post), class: "btn btn-sm btn-danger", data: {confirm: "本当に削除しますか？"}, method: :delete %>
   </div>
-  <div class="p-5">
+  <div class="p-3">
     <p>コメント件数：<%= @post.comments.count %></p>
     <div>
-      <div class="p-5">
+      <div class="p-1">
         <% @post.comments.each do |comment| %>
         <div class="form-group form-inline input-group-sm p-2">
           <%= image_tag comment.user.get_profile_image, width: "100×100" %>
@@ -54,7 +54,7 @@
           <label class="col-md-3 control-label"><%= comment.created_at.strftime('%Y/%m/%d') %></label>
           <label class="col-md-3 control-label"><%= comment.comment %></label>
           <div>
-            <%= link_to '削除', admin_post_comment_path(comment.post, comment), class: "btn btn-sm btn-danger", method: :delete %>
+            <%= link_to '削除', admin_post_comment_path(comment.post, comment), data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger", method: :delete %>
           </div>
         </div>
         <% end %>
