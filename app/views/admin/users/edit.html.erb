@@ -4,7 +4,6 @@
       <div class="text-center pb-5">
         <h2 class="mb-3"><%= @user.name %>編集ページ</h2>
         <div class="pt-5">
-
           <%= form_with model: @user, url: admin_user_path(@user), method: :patch do |f| %>
           <table class="table table-borderless">
             <tr>
