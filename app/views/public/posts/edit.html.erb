@@ -2,39 +2,6 @@
   <%= render "flash_message" %>
   <div class="p-3">
     <h2>投稿編集</h2>
-    <%= form_with model: @post, method: :patch do |f| %>
-    <div class="form-group form-inline input-group-sm pt-3">
-      <label class="col-md-1 control-label"><strong>商品名</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :product_name, placeholder:"商品名" %>
-      <label class="col-md-1 control-label"><strong>タイプ</strong><span class="text-danger">*</span></label>
-      <%= f.collection_select :tag_id, Tag.all, :id, :name, class: "col-sm-3 form-control border-dark" %>
-      <label class="col-1 control-label"><strong>画像</strong></label>
-      <%= f.file_field :image, accept: "image/*" %>
-    </div>
-    <div class="form-group form-inline input-group-sm">
-      <label class="col-md-1 control-label"><strong>味</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :tast, placeholder:"味", size: "10"%>
-      <div class="col-md-1"></div>
-      <label class="col-md-1 control-label"><strong>価格</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :price, placeholder:"価格", size: "5" %>円
-      <div class="col-md-1"></div>
-      <label class="col-md-1 control-label"><strong>内容量</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :net, placeholder:"内容量", size: "5" %>g/ml
-    </div>
-    <div class="form-group form-inline input-group-sm">
-      <label class="col-md-1 control-label"><strong>1食の量</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :serving_size, size: "3" %>g
-      <div class="col-sm-1"></div>
-      <label class="col-md-2 control-label"><strong>カロリー(1食分の量)</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :calorie, size: "5" %>kcal
-      <label class="col-md-3 control-label"><strong>タンパク質量(1食分の量)</strong><span class="text-danger">*</span></label>
-      <%= f.text_field :protein,  size: "5" %>g
-    </div>
-    <h5>説明<span class="text-danger">*</span></h5>
-    <%= f.text_area :description, placeholder:"説明", class: "form-control introduction", style: "width:100%" %>
-    <div class="text-center p-3">
-    <%= f.submit '保存', class: 'btn btn btn-primary' %>
-    </div>
-  <% end %>
+    <%= render "public/posts/form" %>
   </div>
 </div>
