@@ -38,6 +38,3 @@
 
 ## 使用素材
 * [Adobe Stock](https://stock.adobe.com/jp/)
-* [PHOTOM](https://photom.xyz/)
-* [illustAC](https://www.ac-illust.com/)
-* [いらすとや](https://www.irasutoya.com/)
