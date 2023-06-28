@@ -58,14 +58,14 @@
           <%= image_tag comment.user.get_profile_image, width: "100×100" %>
           <%= link_to comment.user.name, user_mypage_path(comment.user.id) %>
           <label class="col-md-5 control-label"><%= comment.created_at.strftime('%Y/%m/%d') %></label>
-          <label class="col-md-5 control-label"><%= comment.comment %></label>
-          <div>
+          <label class="col-md-4 control-label"><%= comment.comment %></label>
+          <label class="col-md-1 control-label">
             <% if comment.user == current_user %>
             <%= link_to post_comment_path(comment.post, comment), data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger", method: :delete do %>
             <i class="fa-regular fa-trash-can"></i>
             <% end %>
             <% end %>
-          </div>
+          </label>
         </div>
         <% end %>
       </div>
