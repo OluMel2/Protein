@@ -17,7 +17,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #空で新規登録ボタンを押すとURLが変わるため実装
    def create
     build_resource(sign_up_params)
-
     resource.save
     yield resource if block_given?
     if resource.persisted?
@@ -33,10 +32,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      #respond_with resource
-      flash[:alert] =  'ユーザー情報の登録に失敗しました。'
+      flash[:alert] = '既に登録されているアドレス、またはパスワードが一致していません。'
       redirect_to new_user_registration_path
-
     end
    end
 
