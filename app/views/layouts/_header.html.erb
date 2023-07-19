@@ -11,7 +11,7 @@
     <ul class="navbar-nav ml-auto">
      <% if admin_signed_in? %>
      <li>
-       <%= link_to 'トップ', admin_root_path, class: 'nav-link text-white'  %>
+       <%= link_to 'トップ', admin_root_path, class: 'nav-link text-white' %>
      </li>
 
      <li>
@@ -19,40 +19,40 @@
      </li>
 
      <li>
-       <%= link_to 'タグ一覧', admin_tags_path, class: 'nav-link text-white'  %>
+       <%= link_to 'タグ一覧', admin_tags_path, class: 'nav-link text-white' %>
      </li>
 
      <li>
-       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-white'  %>
+       <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-white' %>
      </li>
     <% elsif user_signed_in? %>
      <li>
-      <%= link_to 'トップ', root_path, class: 'nav-link text-white'  %>
+      <%= link_to 'トップ', root_path, class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to 'マイページ', user_mypage_path(current_user), class: 'nav-link text-white'  %>
+      <%= link_to '投稿一覧', posts_all_path, class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to '新規投稿', new_post_path, class: 'nav-link text-white'  %>
+      <%= link_to 'マイページ', user_mypage_path(current_user), class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to '投稿一覧', posts_all_path, class: 'nav-link text-white'  %>
+      <%= link_to '新規投稿', new_post_path, class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white'  %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
      </li>
     <% else %>
      <li>
-      <%= link_to 'トップ', root_path, class: 'nav-link text-white'  %>
+      <%= link_to 'トップ', root_path, class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to 'このサイトについて', about_path, class: 'nav-link text-white'  %>
+      <%= link_to 'このサイトについて', about_path, class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white'  %>
+      <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white' %>
      </li>
      <li>
-      <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white'  %>
+      <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white' %>
      </li>
 
      <li>
